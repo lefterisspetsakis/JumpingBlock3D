@@ -14,6 +14,8 @@ public class CameraController : MonoBehaviour
     {
         mainCamera = GetComponent<Camera>();
         player = GameObject.Find("Player");
+
+        SpawnBlocks.Spawn(GameObject.Find("CubeOriginal"));
     }
 	
 	// Update is called once per frame
