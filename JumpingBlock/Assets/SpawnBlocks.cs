@@ -7,16 +7,19 @@ public class SpawnBlocks : MonoBehaviour
 {
     private static List<GameObject> all_blocks;
 
-    public static void Spawn(GameObject block)
+    public GameObject prefab;
+
+    void Start()
     {
-        for (int i = 1; i < 15; i++)
-        {
-            Instantiate(block, new Vector3(0, 0.5f, -80 - i*2));
-        }
+        Spawn(prefab);
     }
 
-    private static GameObject Instantiate(GameObject block, Vector3 vector3)
+    public static void Spawn(GameObject block)
     {
-        throw new NotImplementedException();
+        System.Random rnd = new System.Random();
+        for (int i = 1; i < 15; i++)
+        {
+            Instantiate(block, new Vector3(0, 0.5f, -80 + i * 3 * rnd.Next(1, 3)), Quaternion.Euler(0, 0, 0));
+        }
     }
 }
