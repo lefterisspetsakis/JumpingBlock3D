@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
 
     GameManager GM;
+    // LevelManager LM;
 
 	// Use this for initialization
 	void Awake ()
@@ -27,6 +29,8 @@ public class Menu : MonoBehaviour
     public void ResumeGame()
     {
         GM.SetGameState(GameState.GAME);
+        SceneManager.LoadScene("Level1");
+
         Debug.Log(GM.gameState);
     }
 
