@@ -6,32 +6,33 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
 
-    GameManager GM;
+    public GameManager GM;
     // LevelManager LM;
 
-	// Use this for initialization
-	void Awake ()
+    // Use this for initialization
+    void Awake()
     {
-        GM = GameManager.Instance;
-        GM.OnStateChange += HandleOnStateChange;
-	}
+        GM.OnStateChange += () => Debug.Log("OnStateChange!");
+    }
 
     public void HandleOnStateChange()
     {
         Debug.Log("OnStateChange!");
     }
 
-    public void OnGUI()
-    {
-        
-    }
-
-    public void ResumeGame()
+    // starts game from last save
+    public void StartGame()
     {
         GM.SetGameState(GameState.GAME);
-        SceneManager.LoadScene("Level1");
+        load(1);
+    }
 
-        Debug.Log(GM.gameState);
+    private void load(int level)
+    {
+        print("Loading level...");
+        if (level > 0)
+        { SceneManager.LoadScene(level); }
+        print("Done");
     }
 
     public void Quit()
