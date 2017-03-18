@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public float cameraDistOffsetx = 10;
     public float cameraDistOffsety = 3;
-    public float cameraDistOffsetz = 10;
+    public float cameraDistOffsetz = 3;
     private Camera mainCamera;
     private GameObject player;
 
@@ -20,6 +21,6 @@ public class CameraController : MonoBehaviour
 	void Update ()
     {
         Vector3 playerInfo = player.transform.transform.position;
-        mainCamera.transform.position = new Vector3(playerInfo.x, playerInfo.y + cameraDistOffsety, playerInfo.z - cameraDistOffsetz);
+        mainCamera.transform.position = new Vector3(playerInfo.x + cameraDistOffsetx, playerInfo.y + cameraDistOffsety, playerInfo.z + cameraDistOffsetz);
     }
 }
